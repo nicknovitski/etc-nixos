@@ -93,6 +93,10 @@ in
     isNormalUser = true;
     description = "Nick Novitski";
     extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmhtS3YZgxvJkPkZhqdI2Lr+x2mXVfFvZvhK5Wap5UyXu1kDQz33YVDIt+HdB0ILsi1HR7+4sQq7sIEX5LOcULAvlq7o8kq+09vBB1Vddouo+RRKPtbO6w47lfNFm4bV4qVwpXfLLt/Mch1/f/ICNW+U3hfwCgnWYkTIR87C/aCfOMvCychGcrmVmBjS2LHR+aUozJz4EHYsGsAFUVEUWw+GQp+XrKYA4ewWwKFo+zPQhUKWG5bMShuAshWp2lGDrt8aOY6IUpV173My2Lx1sDFpcfSrCcB9rl86eMer9dMAyDxop91a042jG3GsnXc+OWbQKVF+fx1EyEKA21nbVv nicknovitski@gmail.com"
+      "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBF60PLb/lEXePTrESf65X9Ox18q2t1AZGKjPntnBWWCNv5AjT25SOgEYham1Wj/qPHWVBVViBfIUg4Ux+ThNu03I9hFPyor7KbxBMyfX3Il4X/fT3Wi/c83SGr4x6d/NrA== JuiceSSH"
+     ];
   };
   
   environment.variables.EDITOR = "vim";
