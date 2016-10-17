@@ -87,6 +87,8 @@ in
   
   i18n.defaultLocale = "en_US.UTF-8";
 
+  networking.firewall.allowedTCPPorts = [ 4000 8000 ];
+
   users.extraUsers.nick = {
     isNormalUser = true;
     description = "Nick Novitski";
