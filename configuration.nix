@@ -1,5 +1,7 @@
 { pkgs, ... }:
 
+let myVim = pkgs.callPackage ./vim.nix { };
+in
 {
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
@@ -89,7 +91,7 @@
   environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
     rlwrap
-    vim emacs25 sdcv
+    myVim emacs25 sdcv
     git gitAndTools.hub silver-searcher ctags global
     typespeed gtypist 
     wget links weechat mutt parallel
