@@ -98,6 +98,7 @@ in
       "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBF60PLb/lEXePTrESf65X9Ox18q2t1AZGKjPntnBWWCNv5AjT25SOgEYham1Wj/qPHWVBVViBfIUg4Ux+ThNu03I9hFPyor7KbxBMyfX3Il4X/fT3Wi/c83SGr4x6d/NrA== JuiceSSH"
      ];
   };
+  security.sudo.wheelNeedsPassword = false;
   
   environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
