@@ -108,11 +108,10 @@ in
   environment.systemPackages = with pkgs; [
     rlwrap
     myVim emacs25 sdcv
-    git gitAndTools.hub silver-searcher ctags global
+    git gitAndTools.hub silver-searcher universal-ctags global
     typespeed gtypist 
     wget links weechat mutt parallel
-    taskwarrior ledger newsbeuter
-    awscli bashCompletion bashInteractive rcm
+    taskwarrior tasksh ledger newsbeuter tmuxinator
+    awscli bashInteractive rcm
   ];
-  
 }
