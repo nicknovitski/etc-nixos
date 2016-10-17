@@ -100,7 +100,11 @@ in
   };
   security.sudo.wheelNeedsPassword = false;
   
-  environment.variables.EDITOR = "vim";
+  environment.variables = {
+    EDITOR = "vim";
+    BROWSER = "tmux new-window links";
+  };
+
   environment.systemPackages = with pkgs; [
     rlwrap
     myVim emacs25 sdcv
