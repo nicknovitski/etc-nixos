@@ -14,12 +14,9 @@ in
       baseIndex = 1;
       clock24 = true;
       customPaneNavigationAndResize = true;
-      escapeTime = 0;
-      historyLimit = 10000;
       keyMode = "vi";
       shortcut = "a";
       newSession = true;
-      terminal = "screen-256color";
       extraTmuxConf = ''
         set -sg repeat-time 600
 
@@ -40,17 +37,11 @@ in
 
         # prefix-r: reload config file
         bind r source-file /etc/tmux.conf \; display "/etc/tmux.conf reloaded"
-
-        # create new windows with prefix-c, and in the current path
-        bind c new-window -c '#{pane_current_path}'
-
-        ### split windows with prefix-v or |, and prefix-s or -
+        ### split windows with prefix-v and prefix-s
         unbind %
         unbind '"'
         bind s split-window -v -c '#{pane_current_path}'
-        bind - split-window -v -c '#{pane_current_path}'
         bind v split-window -h -c '#{pane_current_path}'
-        bind | split-window -h -c '#{pane_current_path}'
 
         ### cycle windows with with prefix-ctrl-(movement)
         bind -r C-h select-window -t :-
@@ -81,6 +72,14 @@ in
         unbind [
         unbind p
         bind p paste-buffer
+
+        # TMUX Plugin Manager
+        set -g @plugin 'tmux-plugins/tpm'
+        set -g @plugin 'tmux-plugins/tmux-sensible'
+        set -g @plugin 'tmux-plugins/tmux-copycat'
+        set -g @plugin 'tmux-plugins/tmux-pain-control'
+
+        run '~/.tmux/plugins/tpm/tpm'
       '';
     };
   };
