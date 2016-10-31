@@ -1,10 +1,25 @@
 { pkgs, ... }:
 
-let myVim = pkgs.callPackage ./vim.nix { };
+let
+  myVim = pkgs.callPackage ./vim.nix { };
+  shutter = pkgs.callPackage ./shutter.nix { };
 in
 {
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
+
+  systemd.services.shutter = {
+    description = "Shut down the system when no-one's been logged in for an hour";
+    script = "${shutter}/bin/shutter";
+    serviceConfig.Type = "simple";
+    onFailure = [ "halt.target" ];
+  };
+
+  systemd.timers.shutter = {
+    description = "runs shutter service every hour, ten minutes before billing time";
+    timerConfig = { OnBootSec = "50minutes"; OnUnitActiveSec = "1hour"; };
+    wantedBy = [ "timers.target" ];
+  };
 
   programs = {
     bash.enableCompletion = true;
