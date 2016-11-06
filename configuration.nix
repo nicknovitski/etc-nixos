@@ -6,7 +6,7 @@ in
 {
   imports = [
     <nixpkgs/nixos/modules/virtualisation/amazon-image.nix>
-    ./shutter.nix
+    ./occupado/nixos.nix
     ];
 
   ec2.hvm = true;
