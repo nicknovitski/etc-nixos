@@ -2,6 +2,18 @@
 
 let
   myVim = pkgs.callPackage ./vim.nix { };
+  pinboard = pkgs.python27Packages.buildPythonApplication rec {
+      version = "1.0.0";
+      name = "${pname}-${version}";
+          pname = "pinboard";
+          src = pkgs.fetchurl {
+            url = "mirror://pypi/p/${pname}/${name}.tar.gz";
+            sha256 = "00f1khgx925691grdwvn1bqb1mbxdx33cwa7mnhbss570ja7mjqs";
+          };
+          checkPhase = ''
+            ${pkgs.pythonPackages.python.interpreter} setup.py test
+          '';
+      };
 in
 {
   imports = [
